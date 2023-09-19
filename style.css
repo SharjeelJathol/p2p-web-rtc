@@ -1,0 +1,70 @@
+/* styles.css */
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Session div styles */
+.session {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Textarea styles */
+textarea {
+    width: 100%;
+    max-width: 100%;
+    /* Ensure it doesn't exceed the window width */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Button styles */
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Adjust button styles for small screens */
+@media screen and (max-width: 768px) {
+    button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+/* Video styles */
+.video {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+}

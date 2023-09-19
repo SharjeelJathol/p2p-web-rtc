@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P2P Serverless Video Calling</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>P2P Serverless Video Calling</h1>
+
+    <div>
+      <h2>Start a session</h2>
+      <textarea name="" id="connection" cols="30" rows="10"></textarea>
+      <button onclick="peerA()">Create session</button>
+      <button onclick="copy()">Copy session description</button>
+      <button onclick="peerB()">Send join session request</button>
+      <button onclick="paste()">Paste session description</button>
+      <button onclick="peerA_final()">Accept request</button>
+    </div>
+
+    <div>
+      <video autoplay class="video" id="local">Sending</video>
+      <video autoplay class="video" id="remote">Receiving</video>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
