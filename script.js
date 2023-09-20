@@ -44,6 +44,10 @@ let peerA = async () => {
     );
   };
 
+  localConnection.oniceconnectionstatechange = (e) => {
+    console.log("Ice: " + localConnection.iceConnectionState);
+  };
+
   sendChannel = localConnection.createDataChannel("sendChannel");
   sendChannel.onmessage = (e) =>
     console.log("messsage received by Offer!!!" + e.data);
@@ -62,7 +66,7 @@ let peerA_final = async () => {
   localConnection.setRemoteDescription(answer).then((a) => console.log("done"));
 };
 
-let remoteConnection = new RTCPeerConnection();
+let remoteConnection = new RTCPeerConnection(servers);
 let peerB = async () => {
   let offer = await JSON.parse(document.getElementById("connection").value);
 
@@ -87,6 +91,10 @@ let peerB = async () => {
     document.getElementById("connection").value = JSON.stringify(
       remoteConnection.localDescription
     );
+  };
+
+  remoteConnection.oniceconnectionstatechange = (e) => {
+    console.log("Ice: " + remoteConnection.iceConnectionState);
   };
 
   remoteConnection.ondatachannel = (e) => {
