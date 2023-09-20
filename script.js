@@ -1,4 +1,21 @@
-let localConnection = new RTCPeerConnection();
+const servers = {
+  iceServers: [
+    {
+      urls: [
+        "stun:stun.l.google.com:19302",
+        "stun:stun1.l.google.com:19302",
+        "stun:stun2.l.google.com:19302",
+        "stun:stun3.l.google.com:19302",
+        "stun:stun4.l.google.com:19302",
+        "stun:209.251.63.76:3478",
+        "stun:52.26.251.34:3478",
+        "stun:35.180.81.93:3478",
+      ],
+    },
+  ],
+};
+
+let localConnection = new RTCPeerConnection(servers);
 
 let localStream, remoteStream;
 
