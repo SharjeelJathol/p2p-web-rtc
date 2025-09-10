@@ -4,6 +4,10 @@ A minimal, serverless WebRTC demo for peer-to-peer audio/video calling and a dat
 
 This repository also contains a few experimental pages exploring related concepts (multi-remote streams, basic camera preview, MediaSource API, and an incomplete Agora-RTM signaling attempt).
 
+## Live Demo
+
+https://sharjeeljathol.github.io/p2p-web-rtc/
+
 ## Features
 
 - Peer-to-peer audio/video via `RTCPeerConnection`
