@@ -43,13 +43,7 @@ If connectivity is possible through STUN only, both videos will start and the da
 
 - `index.html` – Main UI and entry point.
 - `script.js` – Core WebRTC logic (offer/answer, media capture, data channel).
-- `style.css` – Basic styles.
-- `multiple.html` – Experimental multi-remote stream + chat scaffold.
-- `mobile.html` – Camera preview demo; start/stop without WebRTC.
-- `file.html` – MediaSource + FileReader experiment.
-- `offline.js` – Alternative manual signaling variant (not included in main page).
-- `stun.js` – Attempted Agora RTM signaling (incomplete; not wired up).
-- `peera.js`, `peerB.js`, `peerA_final.js` – Early experiment fragments.
+- `style.css` – App styling.
 
 See the docs in `docs/` for deeper details.
 
