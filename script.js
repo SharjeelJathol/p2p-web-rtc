@@ -1,3 +1,6 @@
+// ICE server configuration
+// - STUN helps peers discover public-facing addresses for NAT traversal.
+// - This demo does NOT include TURN; some networks may fail without it.
 const servers = {
   iceServers: [
     {
@@ -15,11 +18,18 @@ const servers = {
   ],
 };
 
+// Global peer connection used by the Offerer (Peer A)
 let localConnection = new RTCPeerConnection(servers);
 
 let localStream, remoteStream;
 
 let sendChannel;
+/**
+ * Offerer (Peer A)
+ * - Captures local media and attaches tracks to the connection
+ * - Creates a data channel and an SDP offer
+ * - Sets local description and writes it to the textarea
+ */
 let peerA = async () => {
   if (!localStream) {
     localStream = await navigator.mediaDevices.getUserMedia({
@@ -59,6 +69,10 @@ let peerA = async () => {
   });
 };
 
+/**
+ * Offerer finalization
+ * - Reads the Answer SDP from the textarea and sets it as remote description
+ */
 let peerA_final = async () => {
   let answer = await JSON.parse(document.getElementById("connection").value);
   console.log(answer);
@@ -66,7 +80,15 @@ let peerA_final = async () => {
   localConnection.setRemoteDescription(answer).then((a) => console.log("done"));
 };
 
+// Peer connection for the Answerer (Peer B)
 let remoteConnection = new RTCPeerConnection(servers);
+/**
+ * Answerer (Peer B)
+ * - Parses the Offer SDP from the textarea
+ * - Captures local media and attaches tracks
+ * - Waits for the data channel from the Offerer
+ * - Creates an Answer, sets local description, and writes it to the textarea
+ */
 let peerB = async () => {
   let offer = await JSON.parse(document.getElementById("connection").value);
 
@@ -119,11 +141,13 @@ let peerB = async () => {
     });
 };
 
+/** Convenience: copy textarea content to clipboard */
 let copy = async () => {
   document.getElementById("connection").select();
   document.execCommand("copy");
 };
 
+/** Convenience: paste clipboard text into textarea */
 let paste = async () => {
   navigator.clipboard.readText().then((text) => {
     document.getElementById("connection").value = text;

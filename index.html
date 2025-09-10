@@ -9,16 +9,21 @@
   <body>
     <h1>P2P Serverless Video Calling</h1>
 
-    <div>
+    <!-- Signaling UI: textarea carries SDP between peers via copy/paste -->
+    <div class="session">
       <h2>Start a session</h2>
-      <textarea name="" id="connection" cols="30" rows="10"></textarea>
+      <textarea id="connection" cols="30" rows="10"></textarea>
+      <!-- Offerer (Peer A): create offer and copy -->
       <button onclick="peerA()">Create session</button>
       <button onclick="copy()">Copy session description</button>
+      <!-- Answerer (Peer B): paste offer, generate answer and copy back -->
       <button onclick="peerB()">Send join session request</button>
       <button onclick="paste()">Paste session description</button>
+      <!-- Offerer finalizes by setting the answer as remote description -->
       <button onclick="peerA_final()">Accept request</button>
     </div>
 
+    <!-- Local preview (self) and remote stream (peer) -->
     <div>
       <video autoplay class="video" id="local">Sending</video>
       <video autoplay class="video" id="remote">Receiving</video>
