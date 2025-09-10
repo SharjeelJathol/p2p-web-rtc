@@ -7,27 +7,54 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>P2P Serverless Video Calling</h1>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="title">P2P Serverless Video Calling</h1>
+        <p class="subtitle">WebRTC demo with manual copy/paste signaling</p>
+      </div>
+    </header>
 
-    <!-- Signaling UI: textarea carries SDP between peers via copy/paste -->
-    <div class="session">
-      <h2>Start a session</h2>
-      <textarea id="connection" cols="30" rows="10"></textarea>
-      <!-- Offerer (Peer A): create offer and copy -->
-      <button onclick="peerA()">Create session</button>
-      <button onclick="copy()">Copy session description</button>
-      <!-- Answerer (Peer B): paste offer, generate answer and copy back -->
-      <button onclick="peerB()">Send join session request</button>
-      <button onclick="paste()">Paste session description</button>
-      <!-- Offerer finalizes by setting the answer as remote description -->
-      <button onclick="peerA_final()">Accept request</button>
-    </div>
+    <main class="container">
+      <section class="grid">
+        <!-- Signaling UI: textarea carries SDP between peers via copy/paste -->
+        <div class="card">
+          <h2 class="card-title">Session Controls</h2>
 
-    <!-- Local preview (self) and remote stream (peer) -->
-    <div>
-      <video autoplay class="video" id="local">Sending</video>
-      <video autoplay class="video" id="remote">Receiving</video>
-    </div>
+          <label for="connection" class="label">Session Description (SDP)</label>
+          <textarea id="connection" class="textarea" rows="10" placeholder="Offer/Answer JSON will appear here..."></textarea>
+
+          <div class="button-row">
+            <!-- Offerer (Peer A): create offer and copy -->
+            <button class="btn primary" onclick="peerA()">Create Session</button>
+            <button class="btn" onclick="copy()">Copy Description</button>
+          </div>
+          <div class="button-row">
+            <!-- Answerer (Peer B): paste offer, generate answer and copy back -->
+            <button class="btn accent" onclick="peerB()">Join (Create Answer)</button>
+            <button class="btn" onclick="paste()">Paste Description</button>
+          </div>
+          <div class="button-row">
+            <!-- Offerer finalizes by setting the answer as remote description -->
+            <button class="btn success" onclick="peerA_final()">Accept Answer</button>
+          </div>
+        </div>
+
+        <!-- Local preview (self) and remote stream (peer) -->
+        <div class="card">
+          <h2 class="card-title">Video</h2>
+          <div class="videos">
+            <div class="video-card">
+              <span class="badge">Local</span>
+              <video autoplay playsinline class="video" id="local">Sending</video>
+            </div>
+            <div class="video-card">
+              <span class="badge">Remote</span>
+              <video autoplay playsinline class="video" id="remote">Receiving</video>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <script src="./script.js"></script>
   </body>
